@@ -6,5 +6,5 @@ content-type: application/json
   "title": "absorptions",
   "author": "Oona Räisänen",
   "url": "http://www.windytan.com/",
-  "likes": 0
+  "likes": 99
 }
