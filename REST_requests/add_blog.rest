@@ -1,0 +1,10 @@
+# POST https://hajame-bloglogger.herokuapp.com/api/blogs
+ POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+  "title": "absorptions",
+  "author": "Oona Räisänen",
+  "url": "http://www.windytan.com/",
+  "likes": 0
+}

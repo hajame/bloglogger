@@ -1,0 +1,29 @@
+{
+  "name": "bloglogger",
+  "version": "0.0.1",
+  "description": "Full Stack 2019 MOOC assignment using React, Node.js, Express, Mongoose",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hajame/bloglogger.git"
+  },
+  "author": "hajame",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hajame/bloglogger/issues"
+  },
+  "homepage": "https://github.com/hajame/bloglogger#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
