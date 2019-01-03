@@ -3,8 +3,8 @@
 content-type: application/json
 
 {
-  "title": "absorptions",
+  "title": "Animated line drawings with OpenCV",
   "author": "Oona Räisänen",
-  "url": "http://www.windytan.com/",
+  "url": "https://www.windytan.com/2017/12/animated-line-drawings-with-opencv.html",
   "likes": 99
 }
