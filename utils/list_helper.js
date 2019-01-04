@@ -23,6 +23,17 @@ const favoriteBlog = (blogs) => {
   }
 }
 
+const mostBlogs = (blogs) => {
+  if (blogs.length === 0) return null
+  let topWriter = blogs.reduce((a, b) => {
+    return blogs.filter(blog => blog.author === a.author).length >= blogs.filter(blog => blog.author === b.author).length ? a : b
+  }, blogs[0])
+  return {
+    author: topWriter.author,
+    blogs: blogs.filter(blog => blog.author === topWriter.author).length
+  }
+}
+
 module.exports = {
-  dummy, totalLikes, favoriteBlog
+  dummy, totalLikes, favoriteBlog, mostBlogs
 }
