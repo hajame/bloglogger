@@ -1,5 +1,5 @@
 # POST https://hajame-bloglogger.herokuapp.com/api/blogs
- POST http://localhost:3003/api/blogs
+ POST http://localhost:3001/api/blogs
 content-type: application/json
 
 {

@@ -4,10 +4,10 @@
   "description": "Full Stack 2019 MOOC assignment using React, Node.js, Express, Mongoose",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon index.js",
+    "watch": "cross-env NODE_ENV=development nodemon index.js",
     "lint": "eslint .",
-    "start": "node index.js",
-    "test": "jest --verbose"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -26,8 +26,11 @@
     "mongoose": "^5.4.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.11.1",
     "jest": "^23.6.0",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0"
   }
 }
