@@ -52,10 +52,58 @@ describe('api tests', () => {
     const response = await api
       .get('/api/blogs')
 
-    const contents = response.body.map(r => r.title)
+    const titles = response.body.map(r => r.title)
 
-    expect(contents).toContain('Descrambling split-band voice inversion with deinvert')
+    expect(titles).toContain('Descrambling split-band voice inversion with deinvert')
   })
+
+  test('a valid blog can be added', async () => {
+    const newBlog = {
+      title: 'This is a valid blog',
+      author: 'Test',
+      url: 'https://www.test.test/',
+      likes: 9
+    }
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(201)
+      .expect('Content-Type', /application\/json/)
+
+    const response = await api
+      .get('/api/blogs')
+
+    const titles = response.body.map(r => r.title)
+
+    expect(response.body.length).toBe(initialBlogs.length + 1)
+    expect(titles).toContain('This is a valid blog')
+  })
+
+  afterAll(() => {
+    server.close()
+  })
+
+  // test('a blog without likes prop has 0 likes', async () => {
+  //   const newBlog = {
+  //     title: 'This is a valid blog',
+  //     author: 'Test',
+  //     url: 'https://www.test.test/'
+  //   }
+
+  //   await api
+  //     .post('/api/blogs')
+  //     .send(newBlog)
+  //     .expect(201)
+  //     .expect('Content-Type', /application\/json/)
+
+  //   const response = await api
+  //     .get('/api/blogs')
+
+  //   const likes = response.body.map(r => r.likes)
+
+  //   expect(likes).toContain(0)
+  // })
 
   afterAll(() => {
     server.close()
