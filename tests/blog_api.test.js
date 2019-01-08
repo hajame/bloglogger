@@ -105,6 +105,26 @@ describe('api tests', () => {
     expect(likes).toContain(0)
   })
 
+  test('a blog without title or url is not added', async () => {
+    const newBlog = {
+      author: 'Test',
+      likes: 55
+    }
+
+    const initialResponse = await api
+      .get('/api/blogs')
+
+    await api
+      .post('/api/blogs')
+      .send(newBlog)
+      .expect(400)
+
+    const response = await api
+      .get('/api/blogs')
+
+    expect(response.body.length).toBe(initialResponse.body.length)
+  })
+
   afterAll(() => {
     server.close()
   })
