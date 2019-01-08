@@ -1,0 +1,9 @@
+PUT http://localhost:3001/api/blogs/5c3460a53869de264625e41b
+content-type: application/json
+
+{
+  "title": "Animated line drawings with OpenCV",
+  "author": "Oona Raisanen",
+  "url": "https://www.windytan.com/2017/12/animated-line-drawings-with-opencv.html",
+  "likes": 12
+}

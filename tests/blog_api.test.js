@@ -96,21 +96,42 @@ describe('api tests', () => {
     })
   })
 
-  describe('blogs can be deleted', () => {
-
+  describe('blogs can be altered', () => {
     let addedBlog
-
+    
     beforeAll(async () => {
       addedBlog = new Blog({
-        title: 'This blog will be deleted',
-        author: 'DelTest',
-        url: 'https://www.deltest.test/',
+        title: 'This blog will be altered',
+        author: 'AltTest',
+        url: 'https://www.alttest.test/',
         likes: 1
       })
       await addedBlog.save()
     })
 
     test('a blog in database can be deleted', async () => {
+      const newBlog = {
+        title: 'This blog has been altered',
+        author: 'AltTest',
+        url: 'https://www.alttest.test/',
+        likes: 555
+      }
+
+      await api
+        .put(`/api/blogs/${addedBlog._id}`)
+        .send(newBlog)
+        .expect(200)
+
+      const blogsAfterOperation = await blogsInDb()
+
+      const titles = blogsAfterOperation.map(r => r.title)
+      const likes = blogsAfterOperation.map(r => r.likes)
+
+      expect(titles).toContain(newBlog.title)
+      expect(likes).toContain(newBlog.likes)
+    })
+
+    test('a blog in database can be updated', async () => {
       const blogsAtStart = await blogsInDb()
 
       await api
