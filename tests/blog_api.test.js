@@ -96,6 +96,36 @@ describe('api tests', () => {
     })
   })
 
+  describe('blogs can be deleted', () => {
+
+    let addedBlog
+
+    beforeAll(async () => {
+      addedBlog = new Blog({
+        title: 'This blog will be deleted',
+        author: 'DelTest',
+        url: 'https://www.deltest.test/',
+        likes: 1
+      })
+      await addedBlog.save()
+    })
+
+    test('a blog in database can be deleted', async () => {
+      const blogsAtStart = await blogsInDb()
+
+      await api
+        .delete(`/api/blogs/${addedBlog._id}`)
+        .expect(204)
+
+      const blogsAfterOperation = await blogsInDb()
+
+      const titles = blogsAfterOperation.map(r => r.title)
+
+      expect(titles).not.toContain(addedBlog.title)
+      expect(blogsAfterOperation.length).toBe(blogsAtStart.length - 1)
+    })
+  })
+
   afterAll(() => {
     server.close()
   })
