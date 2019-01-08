@@ -12,7 +12,7 @@ describe('api tests', () => {
     await Promise.all(blogObjects.map(b => b.save()))
   })
 
-  describe('GET-method tests', () => {
+  describe('blogs are returned', () => {
 
     test('blogs are returned as json', async () => {
       await api
@@ -39,8 +39,8 @@ describe('api tests', () => {
     })
   })
 
-  describe('POST-method tests', () => {
-    
+  describe('blogs can be added', () => {
+
     test('a valid blog can be added', async () => {
       const blogsAtStart = await blogsInDb()
       const newBlog = {
