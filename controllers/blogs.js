@@ -13,10 +13,15 @@ blogsRouter.post('/', async (request, response) => {
     if (body.title === undefined && body.url === undefined) {
       return response.status(400).json({ error: 'content missing' })
     }
-    if (body.likes === undefined) {
-      body.likes = 0
-    }
-    let blog = new Blog(body)
+
+    // const user = await User.findById(body.userId)
+
+    const blog = new Blog({
+      title: body.title,
+      author: body.author,
+      url: body.url,
+      likes: body.likes ? body.likes : 0
+    })
 
     const savedBlog = await blog.save()
     response.json(Blog.format(savedBlog))
