@@ -45,11 +45,13 @@ describe('api tests', () => {
 
       test('a valid blog can be added', async () => {
         const blogsAtStart = await blogsInDb()
+        const users = await usersInDb()
         const newBlog = {
           title: 'This is a valid blog',
           author: 'Test',
           url: 'https://www.test.test/',
-          likes: 9
+          likes: 9,
+          userId: users[0]._id
         }
 
         await api
@@ -67,10 +69,12 @@ describe('api tests', () => {
       })
 
       test('a blog without likes prop has 0 likes', async () => {
+        const users = await usersInDb()
         const newBlog = {
           title: 'This is a valid blog',
           author: 'Test',
-          url: 'https://www.test.test/'
+          url: 'https://www.test.test/',
+          userId: users[0]._id
         }
         await api
           .post('/api/blogs')
