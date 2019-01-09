@@ -55,7 +55,7 @@ describe('api tests', () => {
         await api
           .post('/api/blogs')
           .send(newBlog)
-          .expect(201)
+          .expect(200)
           .expect('Content-Type', /application\/json/)
 
         const blogsAfterOperation = await blogsInDb()
@@ -75,7 +75,7 @@ describe('api tests', () => {
         await api
           .post('/api/blogs')
           .send(newBlog)
-          .expect(201)
+          .expect(200)
           .expect('Content-Type', /application\/json/)
         const blogsAfterOperation = await blogsInDb()
         const likes = blogsAfterOperation.map(r => r.likes)
