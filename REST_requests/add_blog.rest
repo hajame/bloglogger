@@ -6,5 +6,6 @@ content-type: application/json
   "title": "Animated line drawings with OpenCV",
   "author": "Oona Raisanen",
   "url": "https://www.windytan.com/2017/12/animated-line-drawings-with-opencv.html",
-  "likes": 99
+  "likes": 1,
+  "userId": "5c34b4cc37464b6142a2d628"
 }
