@@ -8,6 +8,16 @@ let blogSchema = new Schema({
   likes: Number
 })
 
+blogSchema.statics.format = (blog) => {
+  return {
+    id: blog._id,
+    title: blog.title,
+    author: blog.author,
+    url: blog.url,
+    likes: blog.likes
+  }
+}
+
 const Blog = mongoose.model('Blog', blogSchema)
 
 module.exports = Blog

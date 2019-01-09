@@ -151,7 +151,7 @@ describe('api tests', () => {
   })
 
   describe('when there is initially one user at db', async () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
       await User.remove({})
       const user = new User({
         username: 'root',
@@ -188,7 +188,7 @@ describe('api tests', () => {
       const usersBeforeOperation = await usersInDb()
 
       const newUser = {
-        username: 'mluukkai',
+        username: 'mlookkai',
         name: 'Matti Luukkainen',
         password: 'salainen'
       }
@@ -201,7 +201,7 @@ describe('api tests', () => {
 
       const usersAfterOperation = await usersInDb()
       expect(usersAfterOperation.length).toBe(usersBeforeOperation.length + 1)
-      const newInDb = usersAfterOperation.filter(u => u.username === 'mluukkai')
+      const newInDb = usersAfterOperation.filter(u => u.username === 'mlookkai')
       expect(newInDb[0].adult).toBe(true)
     })
 
