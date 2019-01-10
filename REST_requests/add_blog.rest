@@ -1,11 +1,12 @@
 # POST https://hajame-bloglogger.herokuapp.com/api/blogs
  POST http://localhost:3001/api/blogs
 content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vbm9ub2tlIiwiaWQiOiI1YzM0YjRjYzM3NDY0YjYxNDJhMmQ2MjgiLCJpYXQiOjE1NDcxMDA3Mjh9.tazZieRzNK298eedqkPyIJ42VpFyN8JOTbolVV6uxCs
 
 {
   "title": "Animated line drawings with OpenCV",
   "author": "Oona Raisanen",
   "url": "https://www.windytan.com/2017/12/animated-line-drawings-with-opencv.html",
-  "likes": 1,
+  "likes": 150,
   "userId": "5c34b4cc37464b6142a2d628"
 }
