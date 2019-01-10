@@ -2,8 +2,8 @@
 content-type: application/json
 
 {
-  "username": "mononoke",
-  "name": "Sen",
+  "username": "mononoke2",
+  "name": "Sen2",
   "password": "testingOnly",
   "adult": "false"
 }

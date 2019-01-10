@@ -52,11 +52,22 @@ blogsRouter.post('/', async (request, response) => {
 
 blogsRouter.delete('/:id', async (request, response) => {
   try {
+    const decodedToken = jwt.verify(request.token, process.env.SECRET)
+    if (!request.token || !decodedToken.id) {
+      return response.status(401).json({ error: 'token missing or invalid' })
+    }
+    
+    const blog = await Blog.findById(request.params.id)
+    if (!(decodedToken.id.toString() === blog.user.toString())) {
+      return response.status(401).json({ error: 'unauthorized user token' })
+    }
+
     await Blog.findByIdAndRemove(request.params.id)
     response.status(204).end()
+
   } catch (exception) {
     console.log(exception)
-    response.status(400).send({ error: 'malformatted id' })
+    response.status(400).send({ error: 'malformatted id or token' })
   }
 })
 
