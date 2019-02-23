@@ -56,7 +56,7 @@ blogsRouter.delete('/:id', async (request, response) => {
     if (!request.token || !decodedToken.id) {
       return response.status(401).json({ error: 'token missing or invalid' })
     }
-    
+
     const blog = await Blog.findById(request.params.id)
     if (!(decodedToken.id.toString() === blog.user.toString())) {
       return response.status(401).json({ error: 'unauthorized user token' })
@@ -78,11 +78,12 @@ blogsRouter.put('/:id', async (request, response) => {
     title: body.title,
     author: body.author,
     url: body.url,
-    likes: body.likes
+    likes: body.likes,
+    user: body.user
   }
 
   try {
-    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true }).populate('user', { username: 1, name: 1 })
     response.json(Blog.format(updatedBlog))
   } catch (exception) {
     console.log(exception)
